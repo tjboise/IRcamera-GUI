@@ -4,7 +4,8 @@ from PyQt5 import uic
 from PyQt5.QtGui import *
 import cv2
 import matplotlib.pyplot as plt
-from util.damage_density_func import *
+from util import damage_density_func
+import numpy as np
 
 class Stats:
     def __init__(self):
