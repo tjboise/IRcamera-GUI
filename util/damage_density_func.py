@@ -5,7 +5,6 @@ from skimage import data, util
 from skimage.measure import label, regionprops
 from skimage import measure, morphology
 
-
 def account_area(erosion):
     img = erosion.copy()
     label_img = label(img, connectivity=img.ndim)
@@ -32,19 +31,15 @@ def damage_density(img_path):
     # plt.imshow(otsu_img)
 
     #postprocess
-    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
+    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))
     erosion = cv2.morphologyEx(otsu_img, cv2.MORPH_CLOSE, kernel, iterations=1)
     # account area
     areas, major_length, min_length = account_area(erosion)
-
-
-
     sobelx = cv2.Sobel(img,cv2.CV_64F,1,0,ksize=3)#默认ksize=3
     sobely = cv2.Sobel(img,cv2.CV_64F,0,1)
     gm = cv2.sqrt(sobelx ** 2 + sobely ** 2)
     # print(gm/255)
     # plt.imshow(gm)
-
     #erosion = otsu_img
     sobelx0 = cv2.Sobel(erosion,cv2.CV_64F,1,0,ksize=3)#默认ksize=3
     sobely0 = cv2.Sobel(erosion,cv2.CV_64F,0,1)
@@ -65,13 +60,18 @@ def damage_density(img_path):
     otsu_img: segmented images
     '''
 
-    return img,damage_density,otsu_img,gm0,gm
+    return img, damage_density, otsu_img,erosion, gm0, gm
 
 
 if __name__ == '__main__':
 
-    img_path = '3333.jpg'
-    damage_density(img_path)
+    img_path = '../images/cropped_image.jpg'
+    img, damage_density, otsu_img, erosion, gm0, gm = damage_density(img_path)
+    # img = cv2.imread(erosion)
+    print(type(erosion))
+    plt.imshow(gm0)
+    plt.show()
+
 
 
 
