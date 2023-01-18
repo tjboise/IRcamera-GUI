@@ -34,7 +34,7 @@
     </property>
     <widget class="QWidget" name="tab_1">
      <attribute name="title">
-      <string>IR Process</string>
+      <string>Process</string>
      </attribute>
      <widget class="QLabel" name="label_10">
       <property name="geometry">
@@ -75,11 +75,11 @@
        <bool>false</bool>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab_3">
        <attribute name="title">
-        <string>IR image</string>
+        <string>IR+visual</string>
        </attribute>
        <widget class="QWidget" name="verticalLayoutWidget">
         <property name="geometry">
@@ -299,7 +299,7 @@
       </widget>
       <widget class="QWidget" name="tab_4">
        <attribute name="title">
-        <string>IR video</string>
+        <string>Visual</string>
        </attribute>
        <widget class="QLabel" name="label_12">
         <property name="geometry">
@@ -349,7 +349,7 @@
       </widget>
       <widget class="QWidget" name="tab">
        <attribute name="title">
-        <string>Crack</string>
+        <string>Video</string>
        </attribute>
        <widget class="QPushButton" name="pushButton_2">
         <property name="geometry">
